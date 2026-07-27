@@ -15,3 +15,4 @@ Feature: Inicio de Sesión
     When ingreso el usuario "tomsmith" y la contraseña "WrongPass"
     And hago clic en el botón "Login"
     Then debería ver un mensaje de error que contenga "Your password is invalid!"
+    
