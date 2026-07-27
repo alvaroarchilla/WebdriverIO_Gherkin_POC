@@ -1,0 +1,50 @@
+name: Ejecutar pruebas WebDriverIO
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:  # Permite ejecutar manualmente desde la interfaz de GitHub
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Usamos Ubuntu porque es más rápido y barato
+
+    steps:
+      # 1. Clonar el repositorio
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      # 2. Configurar Node.js (versión LTS)
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # O '22' si prefieres, pero 20 es LTS y estable
+          cache: 'npm'
+
+      # 3. Instalar dependencias
+      - name: Instalar dependencias
+        run: npm ci  # npm ci es más rápido y fiable en CI
+
+      # 4. Instalar Chrome (ya viene en ubuntu-latest, pero por si acaso)
+      - name: Instalar Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      # 5. Ejecutar los tests
+      - name: Ejecutar pruebas
+        run: npm run test
+
+      # 6. (Opcional) Subir logs o reportes como artefactos
+      - name: Subir reportes (si los generas)
+        if: always()  # Se ejecuta incluso si fallan los tests
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            # Aquí pondrías la carpeta donde se generan los reportes
+            # Por ejemplo, si usas Allure: allure-results/
+            # Si usas el reporter spec, no genera archivos, así que podemos omitir esto
+            # Pero si quieres guardar los logs, puedes redirigir la salida a un archivo
