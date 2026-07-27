@@ -11,12 +11,13 @@ export const config = defineConfig({
     capabilities: [{
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: [ '--headless','--disable-gpu']
+            args: [ '--disable-gpu']
         }
     }],
     cucumberOpts: {
       require: ['./src/step-definitions/login.steps.ts',
-                './src/step-definitions/dropdown.steps.ts'
+                './src/step-definitions/dropdown.steps.ts',
+                './src/step-definitions/checkboxes.steps.ts'
                 ],
       requireModule: ['ts-node/register'],
   },
