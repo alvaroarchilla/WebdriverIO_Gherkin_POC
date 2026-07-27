@@ -7,11 +7,10 @@ export const config = defineConfig({
     framework: 'cucumber',
     specs: ['./src/features/**/*.feature'],
     
-    // ✅ capabilities funcionará perfectamente
     capabilities: [{
         browserName: 'chrome',
         'goog:chromeOptions': {
-            args: [ '--disable-gpu']
+            args: [ 'headless','--disable-gpu']
         }
     }],
     cucumberOpts: {
@@ -27,6 +26,6 @@ export const config = defineConfig({
     waitforTimeout: 10000,
     connectionRetryTimeout: 120000,
     
-    // Reporter (para ver bonito en consola)
+    // Reporter
     reporters: ['spec'],
 });
