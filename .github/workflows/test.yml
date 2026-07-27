@@ -45,10 +45,10 @@ jobs:
           path: allure-report/
       
       - name: Deploy Allure Report to GitHub Pages
-  if: always() && github.ref == 'refs/heads/main'
-  uses: peaceiris/actions-gh-pages@v3
-  with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
-    publish_dir: ./allure-report
-    destination_dir: allure-report
-    keep_files: false
+        if: always() && github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          destination_dir: allure-report
+          keep_files: false
