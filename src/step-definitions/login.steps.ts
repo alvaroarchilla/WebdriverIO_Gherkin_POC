@@ -18,13 +18,7 @@ When('hago clic en el botón {string}', async (buttonText: string) => {
     await LoginPage.clickLogin();
 });
 
-Then('debería ver un mensaje de éxito que contenga {string}', async (expectedText: string) => {
-    const message = await LoginPage.getFlashMessageText();
-    // Verificamos que contenga el texto esperado y que tenga clase 'success'
-    expect(message).toContain(expectedText);
-});
-
-Then('debería ver un mensaje de error que contenga {string}', async (expectedText: string) => {
+Then('debería ver un mensaje que contenga {string}', async (expectedText: string) => {
     const message = await LoginPage.getFlashMessageText();
     expect(message).toContain(expectedText);
 });

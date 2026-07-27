@@ -6,13 +6,14 @@ Feature: Inicio de Sesión
   Background:
     Given que estoy en la página de login
 
-  Scenario: Login exitoso con credenciales válidas
-    When ingreso el usuario "tomsmith" y la contraseña "SuperSecretPassword!"
-    And hago clic en el botón "Login"
-    Then debería ver un mensaje de éxito que contenga "You logged into a secure area!"
 
-  Scenario: Login fallido con credenciales inválidas
-    When ingreso el usuario "tomsmith" y la contraseña "WrongPass"
+  Scenario Outline: Intentar iniciar sesión con diferentes credenciales
+    When ingreso el usuario "<username>" y la contraseña "<password>"
     And hago clic en el botón "Login"
-    Then debería ver un mensaje de error que contenga "Your password is invalid!"
-    
+    Then debería ver un mensaje que contenga "<message>"
+
+    Examples:
+      | username | password             | message                           |
+      | tomsmith | SuperSecretPassword! | You logged into a secure area!   |
+      | tomsmith | WrongPass            | Your password is invalid!        |
+      | invalid  | anything             | Your username is invalid!        |
