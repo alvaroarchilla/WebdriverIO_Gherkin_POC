@@ -15,7 +15,9 @@ export const config = defineConfig({
         }
     }],
     cucumberOpts: {
-      require: ['./src/step-definitions/login.steps.ts'],
+      require: ['./src/step-definitions/login.steps.ts',
+                './src/step-definitions/dropdown.steps.ts'
+                ],
       requireModule: ['ts-node/register'],
   },
     
