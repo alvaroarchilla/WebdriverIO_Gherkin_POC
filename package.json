@@ -9,12 +9,14 @@
   },
   "devDependencies": {
     "@types/node": "^22.20.1",
+    "@wdio/allure-reporter": "^9.30.0",
     "@wdio/cli": "^9.30.0",
     "@wdio/config": "^9.30.0",
     "@wdio/cucumber-framework": "^9.30.0",
     "@wdio/local-runner": "^9.30.0",
     "@wdio/spec-reporter": "^9.29.1",
     "@wdio/types": "^9.29.1",
+    "allure-commandline": "^2.43.0",
     "chromedriver": "^138.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"

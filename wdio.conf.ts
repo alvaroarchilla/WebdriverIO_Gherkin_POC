@@ -27,5 +27,12 @@ export const config = defineConfig({
     connectionRetryTimeout: 120000,
     
     // Reporter
-    reporters: ['spec'],
+    reporters: [
+        'spec', // para ver en consola
+        ['allure', {
+            outputDir: 'allure-results', // carpeta donde se guardan los resultados
+            disableWebdriverStepsReporting: false,
+            disableWebdriverScreenshotsReporting: false,
+        }]
+    ],
 });
